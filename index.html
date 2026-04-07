@@ -27,7 +27,7 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 18px; }
 
 body {
   background: var(--s);
@@ -35,6 +35,10 @@ body {
   font-family: 'Cormorant Garamond', serif;
   cursor: none;
   overflow-x: hidden;
+}
+@media (max-width: 768px) {
+  body { cursor: auto; }
+  .cursor, .cursor-ring { display: none !important; }
 }
 
 /* ── Custom cursor ── */
@@ -82,12 +86,12 @@ body::before {
 /* ── Scroll reveal ── */
 .reveal {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
   transition: none;
 }
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 /* ═══════════════════════════════════════════════
@@ -98,7 +102,7 @@ nav {
   top: 0; left: 0;
   width: 100%;
   z-index: 100;
-  padding: 28px 48px;
+  padding: 22px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -163,7 +167,7 @@ nav.scrolled {
   list-style: none;
 }
 .nav-links a {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--g);
@@ -205,6 +209,10 @@ nav.scrolled {
   overflow: hidden;
   background: var(--s);
 }
+@media (max-width: 480px) {
+  .hero { padding: 100px 20px 70px; }
+  .hero-tagline { letter-spacing: 0.2em; font-size: 10px; }
+}
 
 /* Animated copper rule across full width */
 .hero-copper-line {
@@ -226,11 +234,11 @@ nav.scrolled {
   position: relative;
   z-index: 2;
   text-align: center;
-  animation: fadeUp 1.2s var(--ease) 0.3s both;
+  /* animation removed */
 }
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 1; transform: none; }
+  to   { opacity: 1; transform: none; }
 }
 
 /* The Horizon Mark — hero scale */
@@ -243,12 +251,12 @@ nav.scrolled {
 }
 .hero-mark-top {
   overflow: hidden;
-  height: clamp(52px, 8vw, 96px);
+  height: clamp(28px, 7.5vw, 96px);
 }
 .hero-word {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-size: clamp(72px, 11vw, 136px);
+  font-size: clamp(38px, 9.5vw, 136px);
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--g);
@@ -280,7 +288,7 @@ nav.scrolled {
 
 .hero-mark-bottom {
   overflow: hidden;
-  height: clamp(52px, 8vw, 96px);
+  height: clamp(28px, 7.5vw, 96px);
 }
 .hero-word-fade {
   font-family: 'Cormorant Garamond', serif;
@@ -291,16 +299,16 @@ nav.scrolled {
   color: rgba(44, 40, 37, 0.14);
   line-height: 1;
   white-space: nowrap;
-  margin-top: clamp(-52px, -8vw, -96px);
+  margin-top: clamp(-28px, -7.5vw, -96px);
 }
 
 .hero-tagline {
-  font-size: clamp(9px, 1vw, 11px);
+  font-size: clamp(11px, 1.3vw, 14px);
   letter-spacing: 0.42em;
   text-transform: uppercase;
   color: var(--c);
   font-weight: 400;
-  animation: fadeUp 1s var(--ease) 1.4s both;
+  /* animation removed */
 }
 
 .hero-scroll {
@@ -312,7 +320,7 @@ nav.scrolled {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  animation: fadeUp 1s var(--ease) 1.8s both;
+  /* animation removed */
 }
 .hero-scroll span {
   font-size: 7.5px;
@@ -335,13 +343,19 @@ nav.scrolled {
    PHILOSOPHY SECTION
 ═══════════════════════════════════════════════ */
 .philosophy {
-  padding: 140px 48px;
+  padding: 100px 48px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 72px;
   max-width: 1200px;
   margin: 0 auto;
   align-items: center;
+}
+@media (max-width: 900px) {
+  .philosophy { grid-template-columns: 1fr; padding: 72px 24px; gap: 48px; }
+}
+@media (max-width: 480px) {
+  .philosophy { padding: 60px 20px; }
 }
 
 .philosophy-left {}
@@ -376,7 +390,7 @@ nav.scrolled {
 }
 
 .philosophy-body {
-  font-size: 14px;
+  font-size: 17px;
   line-height: 1.9;
   color: var(--mid);
   font-weight: 400;
@@ -401,7 +415,7 @@ nav.scrolled {
   background: var(--c);
 }
 .philosophy-statement p {
-  font-size: clamp(18px, 2.2vw, 26px);
+  font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 300;
   font-style: italic;
   line-height: 1.6;
@@ -429,14 +443,14 @@ nav.scrolled {
 }
 .philosophy-stat {}
 .philosophy-stat-num {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: 300;
   color: var(--g);
   line-height: 1;
   letter-spacing: -0.02em;
 }
 .philosophy-stat-label {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--c);
@@ -528,7 +542,7 @@ nav.scrolled {
 }
 
 .material-name {
-  font-size: clamp(22px, 2.2vw, 30px);
+  font-size: clamp(22px, 2.5vw, 32px);
   font-weight: 300;
   color: var(--s);
   font-style: italic;
@@ -536,7 +550,7 @@ nav.scrolled {
   line-height: 1.1;
 }
 .material-desc {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.8;
   color: var(--mid);
   font-weight: 400;
@@ -584,6 +598,17 @@ nav.scrolled {
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
 }
+@media (max-width: 900px) {
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule); }
+  .process-step { background: var(--s); border-right: none !important; padding: 32px 24px !important; }
+  .process { padding: 72px 24px; }
+  .process-header { flex-direction: column; align-items: flex-start; }
+  .process-heading { text-align: left !important; max-width: 100%; }
+}
+@media (max-width: 480px) {
+  .process-steps { grid-template-columns: 1fr; }
+  .process { padding: 60px 20px; }
+}
 .process-step {
   padding: 40px 32px 40px 0;
   border-right: 0.5px solid var(--rule);
@@ -603,14 +628,14 @@ nav.scrolled {
   letter-spacing: -0.02em;
 }
 .step-name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--g);
   margin-bottom: 12px;
   letter-spacing: 0.02em;
 }
 .step-desc {
-  font-size: 10px;
+  font-size: 13px;
   line-height: 1.8;
   color: var(--mid);
   font-style: italic;
@@ -627,10 +652,13 @@ nav.scrolled {
 ═══════════════════════════════════════════════ */
 .statement {
   background: var(--g);
-  padding: 120px 48px;
+  padding: 100px 48px;
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+@media (max-width: 480px) {
+  .statement { padding: 72px 20px; }
 }
 .statement::before {
   content: '';
@@ -648,7 +676,7 @@ nav.scrolled {
 }
 
 .statement-eyebrow {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.36em;
   text-transform: uppercase;
   color: var(--c);
@@ -680,7 +708,7 @@ nav.scrolled {
 }
 
 .statement-note {
-  font-size: 10px;
+  font-size: 15px;
   letter-spacing: 0.18em;
   color: var(--mid);
   font-style: italic;
@@ -702,6 +730,13 @@ nav.scrolled {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
+}
+@media (max-width: 900px) {
+  .geography-inner { grid-template-columns: 1fr; gap: 48px; }
+  .geography { padding: 72px 24px; }
+}
+@media (max-width: 480px) {
+  .geography { padding: 60px 20px; }
 }
 .geography-left {}
 .geography-label {
@@ -731,7 +766,7 @@ nav.scrolled {
   margin-bottom: 32px;
 }
 .geography-body {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.9;
   color: var(--mid);
   font-style: italic;
@@ -756,14 +791,14 @@ nav.scrolled {
 .geography-market:hover .market-arrow { opacity: 1; transform: translateX(0); }
 
 .market-region {
-  font-size: 11px;
+  font-size: 14px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--g);
   font-weight: 600;
 }
 .market-cities {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--mid);
   font-style: italic;
   margin-top: 4px;
@@ -809,6 +844,13 @@ nav.scrolled {
   gap: 80px;
   align-items: center;
 }
+@media (max-width: 900px) {
+  .enquiry-inner { grid-template-columns: 1fr; gap: 48px; }
+  .enquiry { padding: 72px 24px; }
+}
+@media (max-width: 480px) {
+  .enquiry { padding: 60px 20px; }
+}
 .enquiry-left {}
 .enquiry-label {
   font-size: 8px;
@@ -836,7 +878,7 @@ nav.scrolled {
   margin-bottom: 24px;
 }
 .enquiry-body {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.9;
   color: var(--mid);
   font-style: italic;
@@ -844,7 +886,7 @@ nav.scrolled {
   margin-bottom: 40px;
 }
 .enquiry-note {
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   color: var(--mid);
   font-style: italic;
@@ -865,8 +907,8 @@ nav.scrolled {
 }
 .form-group label {
   display: block;
-  font-size: 7.5px;
-  letter-spacing: 0.24em;
+  font-size: 11px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--c);
   font-weight: 600;
@@ -879,7 +921,7 @@ nav.scrolled {
   border: none;
   background: transparent;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 15px;
+  font-size: 18px;
   font-style: italic;
   color: var(--g);
   padding: 0 0 16px;
@@ -1000,7 +1042,7 @@ footer::before {
 }
 
 .footer-tagline {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--mid);
   font-style: italic;
   line-height: 1.7;
@@ -1008,7 +1050,7 @@ footer::before {
   margin-bottom: 24px;
 }
 .footer-contact {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--c);
   letter-spacing: 0.1em;
 }
@@ -1026,7 +1068,7 @@ footer::before {
   margin-bottom: 12px;
 }
 .footer-col ul li a {
-  font-size: 10px;
+  font-size: 13px;
   color: var(--mid);
   text-decoration: none;
   font-style: italic;
@@ -1102,6 +1144,39 @@ footer::before {
 }
 @keyframes overlayOut {
   to { transform: scaleY(0); transform-origin: top; }
+}
+
+
+/* ── MOBILE FOOTER ── */
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+  footer { padding: 48px 24px 28px; }
+}
+@media (max-width: 480px) {
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  footer { padding: 48px 20px 24px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── MOBILE NAV ── */
+@media (max-width: 768px) {
+  nav { padding: 18px 20px !important; }
+  nav.scrolled { padding: 14px 20px !important; }
+  .nav-links { display: none; }
+}
+
+/* ── SECTION LABEL MOBILE ── */
+@media (max-width: 480px) {
+  .philosophy-label,
+  .section-label { font-size: 9px; letter-spacing: 0.18em; }
+}
+
+/* ── GENERAL MOBILE PADDING ── */
+@media (max-width: 480px) {
+  .materials { padding: 60px 20px; }
+  .materials-header { padding: 0; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .material-card { padding: 36px 24px; }
+  .enquiry { padding: 60px 20px; }
 }
 
 </style>
@@ -1491,7 +1566,7 @@ footer::before {
         <p class="footer-tagline">
           A craft atelier rooted in Delhi, built for the world's most demanding design studios.
         </p>
-        <div class="footer-contact"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f373a3333301f3e2d2b3633363a2d713c30">[email&#160;protected]</a></div>
+        <div class="footer-contact"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7cfc2cbcbc8e7c6d5d3cecbcec2d589c4c8">[email&#160;protected]</a></div>
       </div>
 
       <div class="footer-col">
@@ -1572,9 +1647,8 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
-// Scroll reveal — make all visible immediately
-const reveals = document.querySelectorAll('.reveal');
-reveals.forEach(el => el.classList.add('visible'));
+// Make all content visible immediately
+document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
 
 // Form submit
 document.querySelector('.enquiry-form').addEventListener('submit', e => {
